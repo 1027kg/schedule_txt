@@ -72,7 +72,7 @@ Zepto(function($) {
 
         $(".endTime li ").each(function() {
             eTime = parseInt($(this).text().replace(':00', ''));
-            if (parseInt(sTime) >= parseInt(eTime)) $(this).addClass("killListItem");
+            if (parseInt(sTime) >= parseInt(eTime)) $(this).addClass("killListItem killDOM");
         });
 
     });
@@ -82,7 +82,7 @@ Zepto(function($) {
         $("#makeTxt").val(inputVal);
         $('.tbl').removeClass('opa killDOM');
         $('.timeS').removeClass('opa killDOM');
-        $('.endTime li').removeClass('killListItem');
+        $('.endTime li').removeClass('killListItem killDOM');
         $('.timeS').addClass('opa killDOM');
         $('.timeE').addClass('opa killDOM');
     });
