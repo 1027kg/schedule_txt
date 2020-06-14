@@ -10,155 +10,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
     <script src="zepto.min.js"></script>
     <script src="my.js"></script>
-    <style>
-        body {
-            font-family: 'Kosugi Maru', sans-serif;
-            color: #666;
-        }
-        
-        .hero-body {
-            padding: 1.5rem 1.5rem;
-        }
-        
-        h2.month {
-            margin-bottom: 10px;
-        }
-        
-        .table {
-            margin-bottom: 1rem;
-        }
-        
-        .table tr th:nth-of-type(1),
-        .table tr td:nth-of-type(1) {
-            color: red;
-            font-weight: bold;
-            text-align: center;
-            opacity: 0.25;
-        }
-        
-        .table tr th:nth-of-type(7),
-        .table tr td:nth-of-type(7) {
-            color: blue;
-            font-weight: bold;
-            text-align: center;
-            opacity: 0.25;
-        }
-        
-        .table tr td.none {
-            color: #aaa;
-            text-align: center;
-        }
-        
-        .table tr td.holiday {
-            color: red;
-            text-align: center;
-        }
-        
-        .table tr td.today {
-            text-decoration: underline;
-        }
-        
-        .time h2,
-        .txt h2 {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-        
-        .time ul {
-            width: 80%;
-        }
-        
-        .time ul li {
-            text-align: center;
-            color: #363636;
-            border-bottom: 1px solid rgb(219, 219, 219);
-            padding-top: .25em;
-            padding-bottom: .25em;
-        }
-        
-        .opa {
-            opacity: .15;
-        }
-        
-        .killListItem {
-            background-color: #f6f6f6;
-        }
-        
-        .killDOM {
-            pointer-events: none;
-        }
-        
-        textarea {
-            padding: .5em;
-        }
-    </style>
+    <link rel="stylesheet" href="my.css" />
 </head>
 
 <body>
 
-    <section class="hero">
-        <div class="hero-body">
+    <div id="hako" style="width:80%;margin-left:auto;margin-right: auto;text-align: center;">
+
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        スケジュール調整用テキスト
+                    </h1>
+                </div>
+            </div>
+        </section>
+
+        <section class="cal">
             <div class="container">
-                <h1 class="title">
-                    スケジュール調整用テキスト
-                </h1>
-            </div>
-        </div>
-    </section>
+                <div class="columns">
 
-    <section class="cal">
-        <div class="container">
-            <div class="columns">
-                <div class="tbl column is-one-quarter" style="padding: 1.5rem"></div>
+                    <div class="time column is-2"></div>
 
-                <div class="time column is-one-quarter">
-                    <div class="columns">
-                        <div class="column timeS opa killDOM">
-                            <h2>開始時間</h2>
-                            <ul class="startTime">
-                                <li>9:00</li>
-                                <li>10:00</li>
-                                <li>11:00</li>
-                                <li>12:00</li>
-                                <li>13:00</li>
-                                <li>14:00</li>
-                                <li>15:00</li>
-                                <li>16:00</li>
-                                <li>17:00</li>
-                                <li>18:00</li>
-                                <li>19:00</li>
-                            </ul>
-                        </div>
-
-                        <div class="column timeE opa killDOM">
-                            <h2>終了時間</h2>
-                            <ul class="endTime">
-                                <li>9:00</li>
-                                <li>10:00</li>
-                                <li>11:00</li>
-                                <li>12:00</li>
-                                <li>13:00</li>
-                                <li>14:00</li>
-                                <li>15:00</li>
-                                <li>16:00</li>
-                                <li>17:00</li>
-                                <li>18:00</li>
-                                <li>19:00</li>
-                            </ul>
-
-                        </div>
-
+                    <div class="tbl column is-3" style="padding: 1.5rem">
                     </div>
-                </div>
 
-                <div class="txt column is-one-quarter">
-                    <h2>コピペテキスト</h2>
-                    <textarea name="" id="makeTxt" cols="60" rows="20"></textarea>
-                    <button id="allclear">クリア</button>
+                    <div class="time column is-2">
+                        <div class="columns">
+                            <div class="column timeS opa killDOM">
+                                <h2>開始時間</h2>
+                                <ul class="startTime"></ul>
+                            </div>
+
+                            <div class="column timeE opa killDOM">
+                                <h2>終了時間</h2>
+                                <ul class="endTime"></ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="txt column is-3">
+                        <h2>コピペテキスト</h2>
+                        <textarea name="" id="makeTxt" cols="" rows="20"></textarea>
+                        <div class="has-text-centered">
+                            <br/>
+                            <button class="button is-medium is-fullwidth is-info is-outlined " id="copytxt">COPY</button>
+                            <br/>
+                            <button class="button is-medium is-fullwidth is-danger is-outlined " id="allclear">RESET</button>
+                        </div>
+                    </div>
+
+                    <div class="time column is-2 "></div>
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </div>
 
 </body>
 

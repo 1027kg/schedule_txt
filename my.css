@@ -1,0 +1,95 @@
+body {
+    font-family: 'Kosugi Maru', sans-serif;
+    color: #666;
+}
+
+.hero-body {
+    padding: 1.5rem;
+}
+
+h2.month {
+    margin-bottom: 10px;
+}
+
+.table {
+    margin-bottom: 1rem;
+}
+
+.table tr th:nth-of-type(1),
+.table tr td:nth-of-type(1) {
+    color: #f14668;
+    font-weight: 700;
+    text-align: center;
+    opacity: 0.25px;
+}
+
+.table tr th:nth-of-type(7),
+.table tr td:nth-of-type(7) {
+    color: #3298dc;
+    font-weight: 700;
+    text-align: center;
+    opacity: 0.25px;
+}
+
+.table tr td.none {
+    color: #aaa;
+    text-align: center;
+}
+
+.table tr td.holiday {
+    color: #f14668;
+    text-align: center;
+}
+
+.table tr td.today {
+    text-decoration: underline;
+    color: #F69;
+}
+
+.table tr td:hover {
+    background-color: #f6f6f6;
+}
+
+.table td {
+    text-align: center;
+}
+
+.time h2,
+.txt h2 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.time ul li:hover {
+    background-color: #f6f6f6;
+}
+
+.time ul li {
+    text-align: center;
+    color: #363636;
+    border-bottom: 1px solid #dbdbdb;
+    padding-top: .1em;
+    padding-bottom: .1em;
+}
+
+.opa {
+    opacity: .25;
+}
+
+.killListItem {
+    background-color: #f6f6f6;
+}
+
+.killDOM {
+    pointer-events: none;
+}
+
+textarea {
+    padding: .5em;
+    border: 1px solid #dbdbdb;
+    width: 100%;
+}
+
+.selectedItem {
+    background-color: #ccc;
+}

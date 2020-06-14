@@ -40,58 +40,95 @@ nextTable = new Array(7 * nextTblLine);
 for (i = 0; i < 7 * nextTblLine; i++) nextTable[i] = "　";
 for (i = 0; i < myMonthTbl[myMonth]; i++) nextTable[i + nextWeek] = i + 1;
 
-
 Zepto(function($) {
+
     var thisMonth = makeNowTbl();
     var nextMonth = makeNextTbl();
     $("div.tbl").append(thisMonth);
     $("div.tbl").append(nextMonth);
 
+    for (var l = 0; l < 21; l++) {
+        if (l % 2 == 0) {
+            $("ul.startTime").append("<li>" + (l / 2 + 9) + ":00</li>");
+            $("ul.endTime").append("<li>" + (l / 2 + 9) + ":00</li>");
+        } else {
+            $("ul.startTime").append("<li>" + (parseInt(l / 2) + 9) + ":30</li>");
+            $("ul.endTime").append("<li>" + (parseInt(l / 2) + 9) + ":30</li>");
+        }
+    }
+
+    allResetUI();
+
     $("button#allclear").click(function() {
-        $("#makeTxt").val("");
-        $('.tbl').removeClass('opa killDOM');
-        $('.timeS').removeClass('opa killDOM');
-        $('.endTime li').removeClass('killListItem');
-        $('.timeS').addClass('opa killDOM');
-        $('.timeE').addClass('opa killDOM');
+        allResetUI();
     });
 
     $(".tbl td").click(function() {
+
         $("div.tbl").addClass("opa");
         $("#makeTxt").val($("#makeTxt").val() + $(this).attr("data-txt"));
         $(".tbl ").addClass("killDOM ");
         $('.timeS').removeClass('opa killDOM');
+        $(this).addClass("selectedItem");
+
     });
 
     $(".timeS li").click(function() {
 
         $("#makeTxt").val($("#makeTxt").val() + " " + $(this).text());
-        sTime = parseInt($(this).text().replace(':00', ''));
+        sTime = parseInt($(this).text().replace(':', ''));
         $(".timeS").addClass("opa killDOM");
         $('.timeE').removeClass('opa killDOM');
+        $(this).addClass("selectedItem");
 
         $(".endTime li ").each(function() {
-            eTime = parseInt($(this).text().replace(':00', ''));
+            eTime = parseInt($(this).text().replace(':', ''));
             if (parseInt(sTime) >= parseInt(eTime)) $(this).addClass("killListItem killDOM");
         });
 
     });
 
     $(".timeE li").click(function() {
+
         var inputVal = $("#makeTxt").val() + " ~ " + $(this).text() + '\n';
         $("#makeTxt").val(inputVal);
-        $('.tbl').removeClass('opa killDOM');
-        $('.timeS').removeClass('opa killDOM');
-        $('.endTime li').removeClass('killListItem killDOM');
-        $('.timeS').addClass('opa killDOM');
-        $('.timeE').addClass('opa killDOM');
+        singleResetUI();
+
+    });
+
+    $("#copytxt").click(function() {
+
+        var str = $("#makeTxt").val();
+        var listener = function(e) {
+            e.clipboardData.setData("text/plain", str);
+            e.preventDefault();
+            document.removeEventListener("copy", listener);
+        }
+        document.addEventListener("copy", listener);
+        document.execCommand("copy");
+
     });
 
 })
 
+function allResetUI() {
+    $("#makeTxt").val("以下の日程でご都合いい日時はございますか。" + "\n" + '\n');
+    singleResetUI();
+}
+
+function singleResetUI() {
+    $('.tbl').removeClass('opa killDOM');
+    $('.tbl td').removeClass('selectedItem');
+    $('.timeS').removeClass('opa killDOM');
+    $('.timeS li').removeClass('selectedItem');
+    $('.endTime li').removeClass('killListItem');
+    $('.timeS').addClass('opa killDOM');
+    $('.timeE').addClass('opa killDOM');
+}
+
 function makeNowTbl() {
 
-    var tblDOM = "<h2 class='month'>" + (myMonth + 1) + "月</h2>";
+    var tblDOM = "<h2 class='month'>" + myYear + " 年 " + (myMonth + 1) + " 月</h2>";
     tblDOM += "<div class='table-container'><table class='table'>";
     tblDOM += "<tr>";
     for (i = 0; i < 7; i++) tblDOM += "<th>" + myWeekTbl[i] + "</th>";
@@ -104,9 +141,9 @@ function makeNowTbl() {
             hoge = (myMonth + 1) + "月" + myDat + "日(" + myWeekTbl[j] + ")";
             if (myDat === "　") hoge = "";
             if (primaryDate == myDat) {
-                tblDOM += "<td class='today' data-txt='" + hoge + "'>" + myDat + "</td>";
+                tblDOM += "<td class='today' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
             } else {
-                tblDOM += "<td data-txt='" + hoge + "'>" + myDat + "</td>";
+                tblDOM += "<td style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
             }
         }
         tblDOM += "</tr>";
@@ -117,7 +154,7 @@ function makeNowTbl() {
 
 function makeNextTbl() {
 
-    var tblDOM = "<h2 class='month'>" + (nextMonth + 1) + "月</h2>";
+    var tblDOM = "<h2 class='month'>" + nextYear + " 年 " + (nextMonth + 1) + " 月</h2>";
     tblDOM += "<div class='table-container'><table class='table'>";
     tblDOM += "<tr>";
     for (i = 0; i < 7; i++) tblDOM += "<th>" + myWeekTbl[i] + "</th>";
@@ -129,7 +166,7 @@ function makeNextTbl() {
             nextDat = nextTable[j + (i * 7)];
             hoge = (nextMonth + 1) + "月" + nextDat + "日(" + myWeekTbl[j] + ")";
             if (nextDat === "　") hoge = "";
-            tblDOM += "<td data-txt='" + hoge + "'>" + nextDat + "</td>";
+            tblDOM += "<td style='text-align:center' data-txt='" + hoge + "'>" + nextDat + "</td>";
         }
         tblDOM += "</tr>";
     }
