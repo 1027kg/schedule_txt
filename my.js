@@ -39,7 +39,7 @@ nextTable = new Array(7 * nextTblLine);
 for (i = 0; i < 7 * nextTblLine; i++) nextTable[i] = "　";
 for (i = 0; i < myMonthTbl[myMonth]; i++) nextTable[i + nextWeek] = i + 1;
 
-Zepto(function($) {
+$(function($) {
 
     var thisMonth = makeNowTbl();
     var nextMonth = makeNextTbl();
@@ -60,6 +60,7 @@ Zepto(function($) {
 
     $("button#allclear").click(function() {
         allResetUI();
+        ohSnap('テキストをリセットしました', { color: 'red', time: '200' });
     });
 
     $(".tbl td").click(function() {
@@ -96,6 +97,8 @@ Zepto(function($) {
     });
 
     $("#copytxt").click(function() {
+
+        ohSnap('テキストをコピーしました', { color: 'blue', time: '200' });
 
         var str = $("#makeTxt").val();
         var listener = function(e) {

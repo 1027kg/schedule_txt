@@ -101,3 +101,23 @@ textarea {
 .selectedItem {
     background-color: #ccc;
 }
+
+.alert {
+    padding: 10px;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    float: right;
+    clear: right;
+}
+
+.alert-red {
+    color: white;
+    background-color: #f14668;
+}
+
+.alert-blue {
+    color: white;
+    background-color: #3298dc;
+}
