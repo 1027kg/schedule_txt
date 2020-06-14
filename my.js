@@ -23,7 +23,6 @@ myTable = new Array(7 * myTblLine);
 for (i = 0; i < 7 * myTblLine; i++) myTable[i] = "　";
 for (i = 0; i < myMonthTbl[myMonth]; i++) myTable[i + myWeek] = i + 1;
 
-
 // next month
 nextYear = nextDate.getFullYear();
 if (((nextYear % 4) == 0 && (nextYear % 100) != 0) || (nextYear % 400) == 0) {
@@ -47,13 +46,13 @@ Zepto(function($) {
     $("div.tbl").append(thisMonth);
     $("div.tbl").append(nextMonth);
 
-    for (var l = 0; l < 21; l++) {
+    for (var l = 0; l < 19; l++) {
         if (l % 2 == 0) {
-            $("ul.startTime").append("<li>" + (l / 2 + 9) + ":00</li>");
-            $("ul.endTime").append("<li>" + (l / 2 + 9) + ":00</li>");
+            $("ul.startTime").append("<li>" + (l / 2 + 10) + ":00</li>");
+            $("ul.endTime").append("<li>" + (l / 2 + 10) + ":00</li>");
         } else {
-            $("ul.startTime").append("<li>" + (parseInt(l / 2) + 9) + ":30</li>");
-            $("ul.endTime").append("<li>" + (parseInt(l / 2) + 9) + ":30</li>");
+            $("ul.startTime").append("<li>" + (parseInt(l / 2) + 10) + ":30</li>");
+            $("ul.endTime").append("<li>" + (parseInt(l / 2) + 10) + ":30</li>");
         }
     }
 
@@ -128,9 +127,11 @@ function singleResetUI() {
 
 function makeNowTbl() {
 
-    var tblDOM = "<h2 class='month'>" + myYear + " 年 " + (myMonth + 1) + " 月</h2>";
-    tblDOM += "<div class='table-container'><table class='table'>";
+    var tblDOM = "<div class='table-container'>";
+    tblDOM += "<h2 class='month'>" + myYear + " 年 " + (myMonth + 1) + " 月</h2>";
+    tblDOM += "<table class='table' style='margin-left: auto;margin-right: auto'>";
     tblDOM += "<tr>";
+
     for (i = 0; i < 7; i++) tblDOM += "<th>" + myWeekTbl[i] + "</th>";
     tblDOM += "</tr>";
 
@@ -140,8 +141,16 @@ function makeNowTbl() {
             myDat = myTable[j + (i * 7)];
             hoge = (myMonth + 1) + "月" + myDat + "日(" + myWeekTbl[j] + ")";
             if (myDat === "　") hoge = "";
+
+            holiday = JapaneseHolidays.isHoliday(new Date(myYear, myMonth, myDat));
+            if (holiday) console.log("Holiday: " + myMonth + "/" + myDate);
+
             if (primaryDate == myDat) {
-                tblDOM += "<td class='today' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
+                if (holiday) {
+                    tblDOM += "<td class='today holiday' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
+                } else {
+                    tblDOM += "<td class='today' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
+                }
             } else {
                 tblDOM += "<td style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
             }
@@ -154,8 +163,9 @@ function makeNowTbl() {
 
 function makeNextTbl() {
 
-    var tblDOM = "<h2 class='month'>" + nextYear + " 年 " + (nextMonth + 1) + " 月</h2>";
-    tblDOM += "<div class='table-container'><table class='table'>";
+    var tblDOM = "<div class='table-container'>";
+    tblDOM += "<h2 class='month nextMonth'>" + nextYear + " 年 " + (nextMonth + 1) + " 月</h2>";
+    tblDOM += "<table class='table' style='margin-left: auto;margin-right: auto'>";
     tblDOM += "<tr>";
     for (i = 0; i < 7; i++) tblDOM += "<th>" + myWeekTbl[i] + "</th>";
     tblDOM += "</tr>";
@@ -165,8 +175,13 @@ function makeNextTbl() {
         for (j = 0; j < 7; j++) {
             nextDat = nextTable[j + (i * 7)];
             hoge = (nextMonth + 1) + "月" + nextDat + "日(" + myWeekTbl[j] + ")";
+            holiday = JapaneseHolidays.isHoliday(new Date(nextYear, nextMonth, nextDat));
             if (nextDat === "　") hoge = "";
-            tblDOM += "<td style='text-align:center' data-txt='" + hoge + "'>" + nextDat + "</td>";
+            if (holiday) {
+                tblDOM += "<td class='holiday' style='text-align:center' data-txt='" + hoge + "'>" + nextDat + "</td>";
+            } else {
+                tblDOM += "<td class='' style='text-align:center' data-txt='" + hoge + "'>" + nextDat + "</td>";
+            }
         }
         tblDOM += "</tr>";
     }

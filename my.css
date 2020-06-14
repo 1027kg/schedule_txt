@@ -9,10 +9,16 @@ body {
 
 h2.month {
     margin-bottom: 10px;
+    padding-top: 1rem;
+    padding-bottom: .5rem;
+}
+
+h2.nextMonth {
+    padding-top: .5rem;
 }
 
 .table {
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
 }
 
 .table tr th:nth-of-type(1),
@@ -38,7 +44,9 @@ h2.month {
 
 .table tr td.holiday {
     color: #f14668;
+    font-weight: 700;
     text-align: center;
+    /* opacity: 0.25px; */
 }
 
 .table tr td.today {
