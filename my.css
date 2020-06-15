@@ -80,6 +80,10 @@ h2.nextMonth {
     padding-bottom: .1em;
 }
 
+.time ul li:last-child {
+    border-bottom: 0px;
+}
+
 .opa {
     opacity: .25;
 }

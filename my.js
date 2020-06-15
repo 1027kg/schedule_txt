@@ -60,7 +60,7 @@ $(function($) {
 
     $("button#allclear").click(function() {
         allResetUI();
-        ohSnap('テキストをリセットしました', { color: 'red', time: '200' });
+        ohSnap('テキストをリセットしました', { color: 'red', duration: '1000' });
     });
 
     $(".tbl td").click(function() {
@@ -98,7 +98,7 @@ $(function($) {
 
     $("#copytxt").click(function() {
 
-        ohSnap('テキストをコピーしました', { color: 'blue', time: '200' });
+        ohSnap('テキストをコピーしました', { color: 'blue', duration: '1000' });
 
         var str = $("#makeTxt").val();
         var listener = function(e) {
@@ -126,6 +126,7 @@ function singleResetUI() {
     $('.endTime li').removeClass('killListItem');
     $('.timeS').addClass('opa killDOM');
     $('.timeE').addClass('opa killDOM');
+
 }
 
 function makeNowTbl() {
