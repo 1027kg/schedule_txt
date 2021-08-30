@@ -67,8 +67,8 @@ $(function($) {
 
         $("div.tbl").addClass("opa");
         console.log("selected date: " + $(this).attr("data-txt"));
-        if( $(this).attr("data-txt") === "" ){
-            console.log("blank date selected.")
+        if( $(this).attr("data-txt") == "" ){
+            console.log("blank date selected.");
             return false
         }
 
