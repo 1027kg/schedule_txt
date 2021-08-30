@@ -43,6 +43,11 @@ $(function($) {
 
     var thisMonth = makeNowTbl();
     var nextMonth = makeNextTbl();
+
+    $('table tr').each(function(index , elm){
+        console.log($(elem).text());
+    });
+
     $("div.tbl").append(thisMonth);
     $("div.tbl").append(nextMonth);
 
@@ -159,15 +164,14 @@ function makeNowTbl() {
             holiday = JapaneseHolidays.isHoliday(new Date(myYear, myMonth, myDat));
             if (holiday) console.log("Holiday: " + myMonth + "/" + myDate);
 
-            if(myDat != "") classLabel = "valid";
             if (primaryDate == myDat) {
                 if (holiday) {
-                    tblDOM += "<td class='today holiday "+classLabel+"' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
+                    tblDOM += "<td class='today holiday' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
                 } else {
-                    tblDOM += "<td class='today "+classLabel+"' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
+                    tblDOM += "<td class='today' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
                 }
             } else {
-                tblDOM += "<td style='text-align:center' class='"+classLabel+"' data-txt='" + hoge + "'>" + myDat + "</td>";
+                tblDOM += "<td style='text-align:center' class=' data-txt='" + hoge + "'>" + myDat + "</td>";
             }
         }
         tblDOM += "</tr>";
