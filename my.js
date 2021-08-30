@@ -23,9 +23,6 @@ myTable = new Array(7 * myTblLine);
 for (i = 0; i < 7 * myTblLine; i++) myTable[i] = "　";
 for (i = 0; i < myMonthTbl[myMonth]; i++) myTable[i + myWeek] = i + 1;
 
-// console.log("this month:")
-// console.log(myTable)
-
 // next month
 nextYear = nextDate.getFullYear();
 if (((nextYear % 4) == 0 && (nextYear % 100) != 0) || (nextYear % 400) == 0) {
@@ -35,7 +32,6 @@ nextMonth = nextDate.getMonth();
 nextToday = nextDate.getDate();
 nextDate.setDate(1);
 nextDate.setMonth(nextMonth-1);
-// console.log(nextDate)
 
 nextWeek = nextDate.getDay();
 nextTblLine = Math.ceil((nextWeek + myMonthTbl[myMonth]) / 7);
@@ -43,9 +39,6 @@ nextTable = new Array(7 * nextTblLine);
 
 for (i = 0; i < 7 * nextTblLine; i++) nextTable[i] = "　";
 for (i = 0; i < myMonthTbl[myMonth]; i++) nextTable[i + nextWeek] = i + 1;
-
-// console.log("next month:")
-// console.log(nextTable)
 
 $(function($) {
 
@@ -67,39 +60,18 @@ $(function($) {
 
     allResetUI();
 
-    $("table tr").each(function() {
-        $(this).children().each(function () {
-            // console.log($(this).attr("data-txt"));
-            // if( $(this).attr("data-txt") != "") {
-                //$(this).addClass("valid");
-            // }else{
-                //$(this).removeClass("valid");
-            // }
-        });
-    });
-
     $("button#allclear").click(function() {
         allResetUI();
         ohSnap('テキストをリセットしました', { color: 'red', duration: '1000' });
     });
 
     $(".tbl td").click(function() {
-        
-        if( $(this).attr("data-txt") == "" ){
-            // console.log("blank date selected.");
-            return false
-        }else{
-            // console.log($(this).attr("data-txt"))
-        }
-
+        if( $(this).attr("data-txt") == "" ) return false
         $("div.tbl").addClass("opa");
-        // console.log("selected date: " + $(this).attr("data-txt"));
-
         $("#makeTxt").val($("#makeTxt").val() + $(this).attr("data-txt"));
         $(".tbl ").addClass("killDOM ");
         $('.timeS').removeClass('opa killDOM');
         $(this).addClass("selectedItem");
-
     });
 
     $(".timeS li").click(function() {
@@ -143,7 +115,7 @@ $(function($) {
                 str += arr[i] + " :" + (i+1) + ":\n";
                 if( i == arr.length-2) break;
             }
-            str = "以上の日程からご都合いい日時の「番号」を選んでください。" + "\n\n" + str
+            str = str + "以上の日程からご都合いい日時の「番号」を選んでください。"
         }else{
             str = $("#makeTxt").val();
         }
