@@ -143,9 +143,11 @@ $(function($) {
                 str += arr[i] + " :" + (i+1) + ":\n";
                 if( i == arr.length-2) break;
             }
+            str = "以上の日程からご都合いい日時の「番号」を選んでください。" + "\n\n" + str
         }else{
             str = $("#makeTxt").val();
         }
+
         var listener = function(e) {
             e.clipboardData.setData("text/plain", str);
             e.preventDefault();
