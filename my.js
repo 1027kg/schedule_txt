@@ -62,11 +62,11 @@ $(function($) {
     $("table tr").each(function() {
         $(this).children().each(function () {
             console.log($(this).attr("data-txt"));
-            if( $(this).attr("data-txt") != "") {
+            // if( $(this).attr("data-txt") != "") {
                 //$(this).addClass("valid");
-            }else{
+            // }else{
                 // $(this).removeClass("valid");
-            }
+            // }
         });
     });
 
