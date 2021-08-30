@@ -35,8 +35,6 @@ nextMonth = nextDate.getMonth();
 nextToday = nextDate.getDate();
 nextDate.setDate(1);
 nextDate.setMonth(nextMonth-1);
-console.log(nextYear)
-console.log(nextMonth)
 console.log(nextDate)
 
 nextWeek = nextDate.getDay();
