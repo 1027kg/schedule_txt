@@ -60,7 +60,7 @@ $(function($) {
     allResetUI();
 
     $("table.table tr td").each(function(index , elm){
-        console.log($(elem).text());
+        console.log($(elm).text());
     });
 
     $("button#allclear").click(function() {
