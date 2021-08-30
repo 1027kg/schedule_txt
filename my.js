@@ -140,9 +140,9 @@ $(function($) {
             inTxt = $("#makeTxt").val();
             var arr = inTxt.split(/\r\n|\n/);
             for (var i = 0; i < arr.length; i++){
-                str += arr[i] + " :" + i+ ":";
+                str += arr[i] + " :" + (i+1) + ":\n";
+                if( i == arr.length-2) break;
             }
-
         }else{
             str = $("#makeTxt").val();
         }
