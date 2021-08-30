@@ -54,7 +54,7 @@ h2.nextMonth {
     color: #F69;
 }
 
-.table tr td:hover {
+.table tr td.valid:hover {
     background-color: #f6f6f6;
 }
 

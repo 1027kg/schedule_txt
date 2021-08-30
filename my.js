@@ -64,13 +64,14 @@ $(function($) {
     });
 
     $(".tbl td").click(function() {
-
-        $("div.tbl").addClass("opa");
-        console.log("selected date: " + $(this).attr("data-txt"));
+        
         if( $(this).attr("data-txt") == "" ){
             console.log("blank date selected.");
             return false
         }
+
+        $("div.tbl").addClass("opa");
+        console.log("selected date: " + $(this).attr("data-txt"));
 
         $("#makeTxt").val($("#makeTxt").val() + $(this).attr("data-txt"));
         $(".tbl ").addClass("killDOM ");
@@ -123,7 +124,7 @@ $(function($) {
 })
 
 function allResetUI() {
-    $("#makeTxt").val("以下の日程でご都合いい日時はございますか。" + "\n" + '\n');
+    $("#makeTxt").val("以下の日程でご都合いい日時はありますか。" + "\n" + '\n');
     singleResetUI();
 }
 
@@ -158,14 +159,15 @@ function makeNowTbl() {
             holiday = JapaneseHolidays.isHoliday(new Date(myYear, myMonth, myDat));
             if (holiday) console.log("Holiday: " + myMonth + "/" + myDate);
 
+            if(myDat != "") classLabel = "valid";
             if (primaryDate == myDat) {
                 if (holiday) {
-                    tblDOM += "<td class='today holiday' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
+                    tblDOM += "<td class='today holiday "+classLabel+"' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
                 } else {
-                    tblDOM += "<td class='today' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
+                    tblDOM += "<td class='today "+classLabel+"' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
                 }
             } else {
-                tblDOM += "<td style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
+                tblDOM += "<td style='text-align:center' class='"+classLabel+"' data-txt='" + hoge + "'>" + myDat + "</td>";
             }
         }
         tblDOM += "</tr>";
