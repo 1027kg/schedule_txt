@@ -68,6 +68,8 @@ $(function($) {
             console.log($(this).text());
             if( $(this).text() != "") {
                 $(this).addClass("valid");
+            }else{
+                $(this).removeClass("valid");
             }
         });
     });
