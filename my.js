@@ -66,6 +66,8 @@ $(function($) {
     $(".tbl td").click(function() {
 
         $("div.tbl").addClass("opa");
+        console.log("selected date: " + $(this).attr("data-txt"));
+
         $("#makeTxt").val($("#makeTxt").val() + $(this).attr("data-txt"));
         $(".tbl ").addClass("killDOM ");
         $('.timeS').removeClass('opa killDOM');
@@ -81,6 +83,8 @@ $(function($) {
         $('.timeE').removeClass('opa killDOM');
         $(this).addClass("selectedItem");
 
+        console.log("selected time(e): " + $(this).text());
+
         $(".endTime li ").each(function() {
             eTime = parseInt($(this).text().replace(':', ''));
             if (parseInt(sTime) >= parseInt(eTime)) $(this).addClass("killListItem killDOM");
@@ -89,7 +93,8 @@ $(function($) {
     });
 
     $(".timeE li").click(function() {
-
+        
+        console.log("selected time(e): " + $(this).text());
         var inputVal = $("#makeTxt").val() + " ~ " + $(this).text() + '\n';
         $("#makeTxt").val(inputVal);
         singleResetUI();
