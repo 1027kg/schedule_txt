@@ -28,7 +28,7 @@ nextYear = nextDate.getFullYear();
 if (((nextYear % 4) == 0 && (nextYear % 100) != 0) || (nextYear % 400) == 0) {
     myMonthTbl[1] = 29;
 }
-nextMonth = nextDate.getMonth();
+nextMonth = nextDate.getMonth()+1;
 nextToday = nextDate.getDate();
 nextDate.setDate(1);
 
