@@ -106,9 +106,6 @@ $(function($) {
 
         $("#makeTxt").val($("#makeTxt").val() + " " + $(this).text());
         sTime = parseInt($(this).text().replace(':', ''));
-        $(".timeS").addClass("opa killDOM");
-        $('.timeE').removeClass('opa killDOM');
-        $(this).addClass("selectedItem");
 
         console.log("selected time(e): " + $(this).text());
 
@@ -116,6 +113,10 @@ $(function($) {
             eTime = parseInt($(this).text().replace(':', ''));
             if (parseInt(sTime) >= parseInt(eTime)) $(this).addClass("killListItem killDOM");
         });
+
+        $(".timeS").addClass("opa killDOM");
+        $('.timeE').removeClass('opa killDOM');
+        $(this).addClass("selectedItem");
 
     });
 
