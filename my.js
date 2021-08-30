@@ -65,6 +65,7 @@ $(function($) {
 
     $("table tr").each(function() {
         $(this).children().each(function () {
+            console.log($(this).text());
             if( $(this).text() != "") {
                 $(this).addClass("valid");
             }
