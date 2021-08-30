@@ -59,7 +59,7 @@ $(function($) {
 
     allResetUI();
 
-    $("div.tbl table tr td").each(function(index , elm){
+    $("table.table tr td").each(function(index , elm){
         console.log($(elem).text());
     });
 
