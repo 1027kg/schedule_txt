@@ -34,6 +34,7 @@ if (((nextYear % 4) == 0 && (nextYear % 100) != 0) || (nextYear % 400) == 0) {
 nextMonth = nextDate.getMonth();
 nextToday = nextDate.getDate();
 nextDate.setDate(1);
+nextDate.setMonth(nextMonth-1);
 console.log(nextYear)
 console.log(nextMonth)
 console.log(nextDate)
