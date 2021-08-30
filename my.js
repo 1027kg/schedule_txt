@@ -44,12 +44,12 @@ $(function($) {
     var thisMonth = makeNowTbl();
     var nextMonth = makeNextTbl();
 
+    $("div.tbl").append(thisMonth);
+    $("div.tbl").append(nextMonth);
+
     $("table.table tr td").each(function(index , elm){
         console.log($(elem).text());
     });
-
-    $("div.tbl").append(thisMonth);
-    $("div.tbl").append(nextMonth);
 
     for (var l = 0; l < 19; l++) {
         if (l % 2 == 0) {
