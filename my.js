@@ -63,9 +63,9 @@ $(function($) {
         $(this).children().each(function () {
             console.log($(this).attr("data-txt"));
             if( $(this).attr("data-txt") != "") {
-                $(this).addClass("valid");
+                //$(this).addClass("valid");
             }else{
-                $(this).removeClass("valid");
+                // $(this).removeClass("valid");
             }
         });
     });
