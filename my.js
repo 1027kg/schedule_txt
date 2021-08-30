@@ -180,7 +180,7 @@ function makeNowTbl() {
                     tblDOM += "<td class='today' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
                 }
             } else {
-                tblDOM += "<td style='text-align:center' class=' data-txt='" + hoge + "'>" + myDat + "</td>";
+                tblDOM += "<td style='text-align:center' class='' data-txt='" + hoge + "'>" + myDat + "</td>";
             }
         }
         tblDOM += "</tr>";
