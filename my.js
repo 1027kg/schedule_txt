@@ -131,9 +131,21 @@ $(function($) {
 
     $("#copytxt").click(function() {
 
+        var result = window.confirm('Slackのメッセージとしてコピーしますか？');
+
         ohSnap('テキストをコピーしました', { color: 'blue', duration: '1000' });
 
-        var str = $("#makeTxt").val();
+        var str = ""
+        if(result){
+            inTxt = $("#makeTxt").val();
+            var arr = inTxt.split(/\r\n|\n/);
+            for (var i = 0; i < arr.length; i++){
+                console.log(arr[i]);
+            }
+
+        }else{
+            str = $("#makeTxt").val();
+        }
         var listener = function(e) {
             e.clipboardData.setData("text/plain", str);
             e.preventDefault();
@@ -147,7 +159,7 @@ $(function($) {
 })
 
 function allResetUI() {
-    $("#makeTxt").val("以下の日程でご都合いい日時はありますか。" + "\n" + '\n');
+    // $("#makeTxt").val("以下の日程でご都合いい日時はありますか。:one:" + "\n" + '\n');
     singleResetUI();
 }
 
