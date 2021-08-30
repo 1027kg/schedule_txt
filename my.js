@@ -107,7 +107,7 @@ $(function($) {
         $("#makeTxt").val($("#makeTxt").val() + " " + $(this).text());
         sTime = parseInt($(this).text().replace(':', ''));
 
-        console.log("selected time(e): " + $(this).text());
+        // console.log("selected time(e): " + $(this).text());
 
         $(".endTime li ").each(function() {
             eTime = parseInt($(this).text().replace(':', ''));
@@ -122,7 +122,7 @@ $(function($) {
 
     $(".timeE li").click(function() {
         
-        console.log("selected time(e): " + $(this).text());
+        // console.log("selected time(e): " + $(this).text());
         var inputVal = $("#makeTxt").val() + " ~ " + $(this).text() + '\n';
         $("#makeTxt").val(inputVal);
         singleResetUI();
@@ -140,7 +140,7 @@ $(function($) {
             inTxt = $("#makeTxt").val();
             var arr = inTxt.split(/\r\n|\n/);
             for (var i = 0; i < arr.length; i++){
-                console.log(arr[i]);
+                str += arr[i] + " :" + i+ ":";
             }
 
         }else{
