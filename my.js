@@ -80,6 +80,8 @@ $(function($) {
         if( $(this).attr("data-txt") == "" ){
             console.log("blank date selected.");
             return false
+        }else{
+            console.log($(this).attr("data-txt"))
         }
 
         $("div.tbl").addClass("opa");
@@ -190,7 +192,7 @@ function makeNowTbl() {
 function makeNextTbl() {
 
     var tblDOM = "<div class='table-container'>";
-    tblDOM += "<h2 class='month nextMonth'>" + nextYear + " 年 " + (nextMonth + 1) + " 月</h2>";
+    tblDOM += "<h2 class='month nextMonth'>" + nextYear + " 年 " + (nextMonth) + " 月</h2>";
     tblDOM += "<table class='table' style='margin-left: auto;margin-right: auto'>";
     tblDOM += "<tr>";
     for (i = 0; i < 7; i++) tblDOM += "<th>" + myWeekTbl[i] + "</th>";
@@ -200,7 +202,7 @@ function makeNextTbl() {
         tblDOM += ("<tr>");
         for (j = 0; j < 7; j++) {
             nextDat = nextTable[j + (i * 7)];
-            hoge = (nextMonth + 1) + "月" + nextDat + "日(" + myWeekTbl[j] + ")";
+            hoge = (nextMonth) + "月" + nextDat + "日(" + myWeekTbl[j] + ")";
             holiday = JapaneseHolidays.isHoliday(new Date(nextYear, nextMonth, nextDat));
             if (nextDat === "　") hoge = "";
             if (holiday) {
