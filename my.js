@@ -177,7 +177,7 @@ function makeNowTbl() {
             if (myDat === "　") hoge = "";
 
             holiday = JapaneseHolidays.isHoliday(new Date(myYear, myMonth, myDat));
-            if (holiday) console.log("Holiday: " + myMonth + "/" + myDate);
+            // if (holiday) console.log("Holiday: " + myMonth + "/" + myDate);
 
             if (primaryDate == myDat) {
                 if (holiday) {
