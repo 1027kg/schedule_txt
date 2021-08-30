@@ -23,8 +23,8 @@ myTable = new Array(7 * myTblLine);
 for (i = 0; i < 7 * myTblLine; i++) myTable[i] = "　";
 for (i = 0; i < myMonthTbl[myMonth]; i++) myTable[i + myWeek] = i + 1;
 
-console.log("this month:")
-console.log(myTable)
+// console.log("this month:")
+// console.log(myTable)
 
 // next month
 nextYear = nextDate.getFullYear();
@@ -35,7 +35,7 @@ nextMonth = nextDate.getMonth();
 nextToday = nextDate.getDate();
 nextDate.setDate(1);
 nextDate.setMonth(nextMonth-1);
-console.log(nextDate)
+// console.log(nextDate)
 
 nextWeek = nextDate.getDay();
 nextTblLine = Math.ceil((nextWeek + myMonthTbl[myMonth]) / 7);
@@ -44,8 +44,8 @@ nextTable = new Array(7 * nextTblLine);
 for (i = 0; i < 7 * nextTblLine; i++) nextTable[i] = "　";
 for (i = 0; i < myMonthTbl[myMonth]; i++) nextTable[i + nextWeek] = i + 1;
 
-console.log("next month:")
-console.log(nextTable)
+// console.log("next month:")
+// console.log(nextTable)
 
 $(function($) {
 
