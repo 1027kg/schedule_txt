@@ -29,7 +29,6 @@ if (((nextYear % 4) == 0 && (nextYear % 100) != 0) || (nextYear % 400) == 0) {
     myMonthTbl[1] = 29;
 }
 nextMonth = nextDate.getMonth();
-console.log(nextMonth)
 nextToday = nextDate.getDate();
 nextDate.setDate(1);
 
@@ -39,6 +38,8 @@ nextTable = new Array(7 * nextTblLine);
 
 for (i = 0; i < 7 * nextTblLine; i++) nextTable[i] = "　";
 for (i = 0; i < myMonthTbl[myMonth]; i++) nextTable[i + nextWeek] = i + 1;
+
+console.log(nextTable)
 
 $(function($) {
 
