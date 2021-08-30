@@ -86,14 +86,14 @@ $(function($) {
     $(".tbl td").click(function() {
         
         if( $(this).attr("data-txt") == "" ){
-            console.log("blank date selected.");
+            // console.log("blank date selected.");
             return false
         }else{
-            console.log($(this).attr("data-txt"))
+            // console.log($(this).attr("data-txt"))
         }
 
         $("div.tbl").addClass("opa");
-        console.log("selected date: " + $(this).attr("data-txt"));
+        // console.log("selected date: " + $(this).attr("data-txt"));
 
         $("#makeTxt").val($("#makeTxt").val() + $(this).attr("data-txt"));
         $(".tbl ").addClass("killDOM ");
