@@ -63,7 +63,7 @@ $(function($) {
     //     console.log($(elm).text());
     // });
 
-    table.find('tr').each(function (i, el) {
+    $("table").find('tr').each(function (i, el) {
         var tds = $(this).find('td');
         var dd = tds.eq(0).text();
         if(dd!="") tds.eq(0).addClass("valid");
