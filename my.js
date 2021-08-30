@@ -47,10 +47,6 @@ $(function($) {
     $("div.tbl").append(thisMonth);
     $("div.tbl").append(nextMonth);
 
-    $("table.table tr td").each(function(index , elm){
-        console.log($(elem).text());
-    });
-
     for (var l = 0; l < 19; l++) {
         if (l % 2 == 0) {
             $("ul.startTime").append("<li>" + (l / 2 + 10) + ":00</li>");
@@ -62,6 +58,10 @@ $(function($) {
     }
 
     allResetUI();
+
+    $("div.tbl table tr td").each(function(index , elm){
+        console.log($(elem).text());
+    });
 
     $("button#allclear").click(function() {
         allResetUI();
