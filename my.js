@@ -64,9 +64,7 @@ $(function($) {
     // });
 
     table.find('tr').each(function (i, el) {
-        var $tds = $(this).find('td'),
-            dd = $tds.eq(0).text(),
-        
+        var $tds = $(this).find('td'),dd = $tds.eq(0).text();
         if(dd != "") $tds.eq(0).addClass("valid");
     });
 
