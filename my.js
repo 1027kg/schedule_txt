@@ -59,8 +59,14 @@ $(function($) {
 
     allResetUI();
 
-    $("table.table tr td").each(function(index , elm){
-        console.log($(elm).text());
+    // $("table.table tr td").each(function(index , elm){
+    //     console.log($(elm).text());
+    // });
+
+    table.find('tr').each(function (i, el) {
+        var $tds = $(this).find('td'),
+            dd = $tds.eq(0).text(),
+        console.log(dd);
     });
 
     $("button#allclear").click(function() {
