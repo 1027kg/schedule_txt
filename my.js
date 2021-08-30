@@ -44,7 +44,7 @@ $(function($) {
     var thisMonth = makeNowTbl();
     var nextMonth = makeNextTbl();
 
-    $('table tr').each(function(index , elm){
+    $("table.table tr td").each(function(index , elm){
         console.log($(elem).text());
     });
 
