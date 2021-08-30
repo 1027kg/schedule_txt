@@ -29,6 +29,7 @@ if (((nextYear % 4) == 0 && (nextYear % 100) != 0) || (nextYear % 400) == 0) {
     myMonthTbl[1] = 29;
 }
 nextMonth = nextDate.getMonth();
+console.log(nextMonth)
 nextToday = nextDate.getDate();
 nextDate.setDate(1);
 
@@ -65,7 +66,7 @@ $(function($) {
             // if( $(this).attr("data-txt") != "") {
                 //$(this).addClass("valid");
             // }else{
-                // $(this).removeClass("valid");
+                //$(this).removeClass("valid");
             // }
         });
     });
