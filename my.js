@@ -115,7 +115,7 @@ $(function($) {
                 str += arr[i] + " :" + (i+1) + ":\n";
                 if( i == arr.length-2) break;
             }
-            str = str + "以上の日程からご都合いい日時の「番号」を選んでください。"
+            str = str + "以上の日程からご都合いい日時の「番号」を選んでください。\n日程回答用:"
         }else{
             str = $("#makeTxt").val();
         }
