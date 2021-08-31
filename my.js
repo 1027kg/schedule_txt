@@ -31,7 +31,6 @@ if (((nextYear % 4) == 0 && (nextYear % 100) != 0) || (nextYear % 400) == 0) {
 nextMonth = nextDate.getMonth();
 nextToday = nextDate.getDate();
 nextDate.setDate(1);
-nextDate.setMonth(nextMonth-1);
 
 nextWeek = nextDate.getDay();
 nextTblLine = Math.ceil((nextWeek + myMonthTbl[myMonth]) / 7);
@@ -60,41 +59,59 @@ $(function($) {
 
     allResetUI();
 
+    $("table tr").each(function() {
+        $(this).children().each(function () {
+            console.log($(this).attr("data-txt"));
+            if( $(this).attr("data-txt") != "") {
+                $(this).addClass("valid");
+            }else{
+                $(this).removeClass("valid");
+            }
+        });
+    });
+
     $("button#allclear").click(function() {
         allResetUI();
         ohSnap('テキストをリセットしました', { color: 'red', duration: '1000' });
     });
 
     $(".tbl td").click(function() {
-        if( $(this).attr("data-txt") == "" ) return false
+        
+        if( $(this).attr("data-txt") == "" ){
+            console.log("blank date selected.");
+            return false
+        }
+
         $("div.tbl").addClass("opa");
+        console.log("selected date: " + $(this).attr("data-txt"));
+
         $("#makeTxt").val($("#makeTxt").val() + $(this).attr("data-txt"));
         $(".tbl ").addClass("killDOM ");
         $('.timeS').removeClass('opa killDOM');
         $(this).addClass("selectedItem");
+
     });
 
     $(".timeS li").click(function() {
 
         $("#makeTxt").val($("#makeTxt").val() + " " + $(this).text());
         sTime = parseInt($(this).text().replace(':', ''));
+        $(".timeS").addClass("opa killDOM");
+        $('.timeE').removeClass('opa killDOM');
+        $(this).addClass("selectedItem");
 
-        // console.log("selected time(e): " + $(this).text());
+        console.log("selected time(e): " + $(this).text());
 
         $(".endTime li ").each(function() {
             eTime = parseInt($(this).text().replace(':', ''));
             if (parseInt(sTime) >= parseInt(eTime)) $(this).addClass("killListItem killDOM");
         });
 
-        $(".timeS").addClass("opa killDOM");
-        $('.timeE').removeClass('opa killDOM');
-        $(this).addClass("selectedItem");
-
     });
 
     $(".timeE li").click(function() {
         
-        // console.log("selected time(e): " + $(this).text());
+        console.log("selected time(e): " + $(this).text());
         var inputVal = $("#makeTxt").val() + " ~ " + $(this).text() + '\n';
         $("#makeTxt").val(inputVal);
         singleResetUI();
@@ -103,23 +120,9 @@ $(function($) {
 
     $("#copytxt").click(function() {
 
-        var result = window.confirm('Slackのメッセージとしてコピーしますか？');
-
         ohSnap('テキストをコピーしました', { color: 'blue', duration: '1000' });
 
-        var str = ""
-        if(result){
-            inTxt = $("#makeTxt").val();
-            var arr = inTxt.split(/\r\n|\n/);
-            for (var i = 0; i < arr.length; i++){
-                str += arr[i] + " :" + (i+1) + ":\n";
-                if( i == arr.length-2) break;
-            }
-            str = str + "以上の日程からご都合いい日時の「番号」を選んでください。"
-        }else{
-            str = $("#makeTxt").val();
-        }
-
+        var str = $("#makeTxt").val();
         var listener = function(e) {
             e.clipboardData.setData("text/plain", str);
             e.preventDefault();
@@ -133,7 +136,7 @@ $(function($) {
 })
 
 function allResetUI() {
-    // $("#makeTxt").val("以下の日程でご都合いい日時はありますか。:one:" + "\n" + '\n');
+    $("#makeTxt").val("以下の日程でご都合いい日時はありますか。" + "\n" + '\n');
     singleResetUI();
 }
 
@@ -162,11 +165,11 @@ function makeNowTbl() {
         tblDOM += ("<tr>");
         for (j = 0; j < 7; j++) {
             myDat = myTable[j + (i * 7)];
-            hoge = (myMonth + 1) + "月" + myDat + "日(" + myWeekTbl[j] + ")";
+            hoge = zeroPadding((myMonth + 1),2) + "月" + zeroPadding(myDat,2) + "日(" + myWeekTbl[j] + ")";
             if (myDat === "　") hoge = "";
 
             holiday = JapaneseHolidays.isHoliday(new Date(myYear, myMonth, myDat));
-            // if (holiday) console.log("Holiday: " + myMonth + "/" + myDate);
+            if (holiday) console.log("Holiday: " + myMonth + "/" + myDate);
 
             if (primaryDate == myDat) {
                 if (holiday) {
@@ -175,7 +178,7 @@ function makeNowTbl() {
                     tblDOM += "<td class='today' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
                 }
             } else {
-                tblDOM += "<td style='text-align:center' class='' data-txt='" + hoge + "'>" + myDat + "</td>";
+                tblDOM += "<td style='text-align:center' class=' data-txt='" + hoge + "'>" + myDat + "</td>";
             }
         }
         tblDOM += "</tr>";
@@ -187,7 +190,7 @@ function makeNowTbl() {
 function makeNextTbl() {
 
     var tblDOM = "<div class='table-container'>";
-    tblDOM += "<h2 class='month nextMonth'>" + nextYear + " 年 " + (nextMonth) + " 月</h2>";
+    tblDOM += "<h2 class='month nextMonth'>" + nextYear + " 年 " + (nextMonth + 1) + " 月</h2>";
     tblDOM += "<table class='table' style='margin-left: auto;margin-right: auto'>";
     tblDOM += "<tr>";
     for (i = 0; i < 7; i++) tblDOM += "<th>" + myWeekTbl[i] + "</th>";
@@ -197,7 +200,7 @@ function makeNextTbl() {
         tblDOM += ("<tr>");
         for (j = 0; j < 7; j++) {
             nextDat = nextTable[j + (i * 7)];
-            hoge = (nextMonth) + "月" + nextDat + "日(" + myWeekTbl[j] + ")";
+            hoge = zeroPadding((nextMonth + 1),2) + "月" + zeroPadding(nextDat,2) + "日(" + myWeekTbl[j] + ")";
             holiday = JapaneseHolidays.isHoliday(new Date(nextYear, nextMonth, nextDat));
             if (nextDat === "　") hoge = "";
             if (holiday) {
@@ -210,4 +213,8 @@ function makeNextTbl() {
     }
     tblDOM += "</table></div>";
     return tblDOM;
+}
+
+function zeroPadding(NUM, LEN){
+	return ( Array(LEN).join('0') + NUM ).slice( -LEN );
 }
