@@ -15,6 +15,8 @@ if (((myYear % 4) == 0 && (myYear % 100) != 0) || (myYear % 400) == 0) {
 myMonth = myDate.getMonth();
 myToday = myDate.getDate();
 myDate.setDate(1);
+console.log("myDate")
+console.log(myDate);
 
 myWeek = myDate.getDay();
 myTblLine = Math.ceil((myWeek + myMonthTbl[myMonth]) / 7);
@@ -31,6 +33,8 @@ if (((nextYear % 4) == 0 && (nextYear % 100) != 0) || (nextYear % 400) == 0) {
 nextMonth = nextDate.getMonth();
 nextToday = nextDate.getDate();
 nextDate.setDate(1);
+console.log("nextDate");
+console.log(nextDate);
 
 nextWeek = nextDate.getDay();
 nextTblLine = Math.ceil((nextWeek + myMonthTbl[myMonth]) / 7);
