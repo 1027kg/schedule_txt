@@ -3,8 +3,8 @@ var year = myDate.getFullYear();
 var month = myDate.getMonth();
 var nextDate = new Date(year, month);
 nextDate.setMonth(nextDate.getMonth() + 1);
-console.log("nextDate01");
-console.log(nextDate);
+// console.log("nextDate01");
+// console.log(nextDate);
 
 primaryDate = 　myDate.getDate();
 
@@ -19,8 +19,8 @@ if (((myYear % 4) == 0 && (myYear % 100) != 0) || (myYear % 400) == 0) {
 myMonth = myDate.getMonth();
 myToday = myDate.getDate();
 myDate.setDate(1);
-console.log("myDate01")
-console.log(myDate);
+// console.log("myDate01")
+// console.log(myDate);
 
 myWeek = myDate.getDay();
 myTblLine = Math.ceil((myWeek + myMonthTbl[myMonth]) / 7);
@@ -37,8 +37,8 @@ if (((nextYear % 4) == 0 && (nextYear % 100) != 0) || (nextYear % 400) == 0) {
 nextMonth = nextDate.getMonth();
 nextToday = nextDate.getDate();
 nextDate.setDate(1);
-console.log("nextDate02");
-console.log(nextDate);
+// console.log("nextDate02");
+// console.log(nextDate);
 
 nextWeek = nextDate.getDay();
 nextTblLine = Math.ceil((nextWeek + myMonthTbl[myMonth]) / 7);
@@ -176,13 +176,8 @@ function makeNowTbl() {
         for (j = 0; j < 7; j++) {
             myDat = myTable[j + (i * 7)];
             hoge = zeroPadding((myMonth + 1),2) + '月' + zeroPadding(myDat,2) + '日(' + myWeekTbl[j] + ')';
-            // hoge = (myMonth + 1) + "月" + myDat + "日(" + myWeekTbl[j] + ")";
             if (myDat === "　") hoge = "";
-            console.log(hoge)
-
             holiday = JapaneseHolidays.isHoliday(new Date(myYear, myMonth, myDat));
-            // if (holiday) console.log("Holiday: " + myMonth + "/" + myDate);
-
             if (primaryDate == myDat) {
                 if (holiday) {
                     tblDOM += "<td class='today holiday' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
@@ -213,8 +208,6 @@ function makeNextTbl() {
         for (j = 0; j < 7; j++) {
             nextDat = nextTable[j + (i * 7)];
             hoge = zeroPadding((nextMonth + 1),2) + '月' + zeroPadding(nextDat,2) + '日(' + myWeekTbl[j] + ')';
-            // hoge = (nextMonth + 1) + "月" + nextDat + "日(" + myWeekTbl[j] + ")";
-            console.log(hoge)
 
             holiday = JapaneseHolidays.isHoliday(new Date(nextYear, nextMonth, nextDat));
             if (nextDat === "　") hoge = "";
