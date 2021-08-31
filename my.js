@@ -120,6 +120,17 @@ $(function($) {
         ohSnap('テキストをコピーしました', { color: 'blue', duration: '1000' });
 
         var str = $("#makeTxt").val();
+        var isSlackMsg = window.confirm("Slackメッセージ形式でコピーしますか？");
+        if(isSlackMsg) {
+            arr = str.split(/\r\n|\n/);
+            str = "";
+            for (var i = 0; i < arr.length; i++){
+                str += arr[i] +' :'+(i+1)+':';
+                if(i==(arr.length-1)) break;
+            }
+            str += "以上の日程からご都合いい日時の「番号」を選んでください。";
+        }
+
         var listener = function(e) {
             e.clipboardData.setData("text/plain", str);
             e.preventDefault();
@@ -133,7 +144,7 @@ $(function($) {
 })
 
 function allResetUI() {
-    $("#makeTxt").val("以下の日程でご都合いい日時はありますか。" + "\n" + '\n');
+    // $("#makeTxt").val("以下の日程でご都合いい日時はありますか。" + "\n" + '\n');
     singleResetUI();
 }
 
