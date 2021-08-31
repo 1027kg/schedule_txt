@@ -173,8 +173,8 @@ function makeNowTbl() {
         tblDOM += ("<tr>");
         for (j = 0; j < 7; j++) {
             myDat = myTable[j + (i * 7)];
-            // hoge = zeroPadding((myMonth + 1),2) + "月" + zeroPadding(myDat,2) + "日(" + myWeekTbl[j] + ")";
-            hoge = (myMonth + 1) + "月" + myDat + "日(" + myWeekTbl[j] + ")";
+            hoge = zeroPadding((myMonth + 1),2) + "月" + zeroPadding(myDat,2) + "日(" + myWeekTbl[j] + ")";
+            // hoge = (myMonth + 1) + "月" + myDat + "日(" + myWeekTbl[j] + ")";
             if (myDat === "　") hoge = "";
             console.log(hoge)
 
@@ -210,8 +210,8 @@ function makeNextTbl() {
         tblDOM += ("<tr>");
         for (j = 0; j < 7; j++) {
             nextDat = nextTable[j + (i * 7)];
-            // hoge = zeroPadding((nextMonth + 1),2) + "月" + zeroPadding(nextDat,2) + "日(" + myWeekTbl[j] + ")";
-            hoge = (nextMonth + 1) + "月" + nextDat + "日(" + myWeekTbl[j] + ")";
+            hoge = zeroPadding((nextMonth + 1),2) + "月" + zeroPadding(nextDat,2) + "日(" + myWeekTbl[j] + ")";
+            // hoge = (nextMonth + 1) + "月" + nextDat + "日(" + myWeekTbl[j] + ")";
             console.log(hoge)
 
             holiday = JapaneseHolidays.isHoliday(new Date(nextYear, nextMonth, nextDat));
