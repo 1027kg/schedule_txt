@@ -67,17 +67,6 @@ $(function($) {
 
     allResetUI();
 
-    $("table tr").each(function() {
-        $(this).children().each(function () {
-            console.log($(this).attr("data-txt"));
-            // if( $(this).attr("data-txt") != "") {
-            //     $(this).addClass("valid");
-            // }else{
-            //     $(this).removeClass("valid");
-            // }
-        });
-    });
-
     $("button#allclear").click(function() {
         allResetUI();
         ohSnap('テキストをリセットしました', { color: 'red', duration: '1000' });
@@ -188,7 +177,7 @@ function makeNowTbl() {
                     tblDOM += "<td class='today' style='text-align:center' data-txt='" + hoge + "'>" + myDat + "</td>";
                 }
             } else {
-                tblDOM += "<td style='text-align:center' class=' data-txt='" + hoge + "'>" + myDat + "</td>";
+                tblDOM += "<td style='text-align:center' class='' data-txt='" + hoge + "'>" + myDat + "</td>";
             }
         }
         tblDOM += "</tr>";
