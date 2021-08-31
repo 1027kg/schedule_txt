@@ -167,6 +167,7 @@ function makeNowTbl() {
             myDat = myTable[j + (i * 7)];
             hoge = zeroPadding((myMonth + 1),2) + "月" + zeroPadding(myDat,2) + "日(" + myWeekTbl[j] + ")";
             if (myDat === "　") hoge = "";
+            console.log(hoge)
 
             holiday = JapaneseHolidays.isHoliday(new Date(myYear, myMonth, myDat));
             if (holiday) console.log("Holiday: " + myMonth + "/" + myDate);
@@ -201,6 +202,8 @@ function makeNextTbl() {
         for (j = 0; j < 7; j++) {
             nextDat = nextTable[j + (i * 7)];
             hoge = zeroPadding((nextMonth + 1),2) + "月" + zeroPadding(nextDat,2) + "日(" + myWeekTbl[j] + ")";
+            console.log(hoge)
+            
             holiday = JapaneseHolidays.isHoliday(new Date(nextYear, nextMonth, nextDat));
             if (nextDat === "　") hoge = "";
             if (holiday) {
