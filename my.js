@@ -1,5 +1,6 @@
 myDate = new Date();
-nextDate = new Date(myDate.getFullYear(), myDate.getMonth(), myDate.getDate());
+var nextDate = new Date(year, month);
+nextDate.setMonth(nextDate.getMonth() + 1);
 console.log("nextDate01");
 console.log(nextDate);
 
