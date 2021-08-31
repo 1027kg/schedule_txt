@@ -1,6 +1,6 @@
 myDate = new Date();
 nextDate = new Date();
-nextDate.setMonth(nextDate.getMonth() + 1);
+nextDate.setMonth(nextDate.getMonth());
 console.log("nextDate01");
 console.log(nextDate);
 
