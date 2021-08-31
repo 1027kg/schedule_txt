@@ -1,6 +1,8 @@
 myDate = new Date();
 nextDate = new Date();
 nextDate.setMonth(nextDate.getMonth() + 1);
+console.log("nextDate01");
+console.log(nextDate);
 
 primaryDate = 　myDate.getDate();
 
@@ -15,7 +17,7 @@ if (((myYear % 4) == 0 && (myYear % 100) != 0) || (myYear % 400) == 0) {
 myMonth = myDate.getMonth();
 myToday = myDate.getDate();
 myDate.setDate(1);
-console.log("myDate")
+console.log("myDate01")
 console.log(myDate);
 
 myWeek = myDate.getDay();
@@ -33,7 +35,7 @@ if (((nextYear % 4) == 0 && (nextYear % 100) != 0) || (nextYear % 400) == 0) {
 nextMonth = nextDate.getMonth();
 nextToday = nextDate.getDate();
 nextDate.setDate(1);
-console.log("nextDate");
+console.log("nextDate02");
 console.log(nextDate);
 
 nextWeek = nextDate.getDay();
