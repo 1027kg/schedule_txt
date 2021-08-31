@@ -125,10 +125,12 @@ $(function($) {
             arr = str.split(/\r\n|\n/);
             str = "";
             for (var i = 0; i < arr.length; i++){
-                str += arr[i] +' :'+(i+1)+':';
-                if(i==(arr.length-1)) break;
+                str += arr[i] +' :'+(i+1)+':\n';
+                if(i==(arr.length-2)) break;
             }
             str += "以上の日程からご都合いい日時の「番号」を選んでください。";
+        }else{
+            str += "以上の日程からご都合いい日時をお教えください。";
         }
 
         var listener = function(e) {
